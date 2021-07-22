@@ -129,7 +129,7 @@ export default {
         flashMask() {
             let isMask = false;
 
-            $.each(this.messages, (k, v) => {
+          this.messages.forEach((v) => {
                 if(v.mask) {
                     isMask = true;
 
@@ -193,7 +193,7 @@ export default {
         },
 
         handleObject(message) {
-            return $.extend(this.defaultOptions(), message);
+            return {...this.defaultOptions(), ...message};
         },
 
         defaultOptions() {

@@ -219,9 +219,9 @@ var __vue_render__ = function __vue_render__() {
   var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;return _c('transition', { attrs: { "name": "fade" } }, [_c('div', { staticClass: "alert", class: ['alert-' + _vm.message.type, _vm.message.inline ? 'alert-inline' : '', 'row'] }, [_vm.isCloseBtn ? _c('a', { staticClass: "close", class: _vm.inlineClass, staticStyle: { "position": "absolute", "left": "0" }, attrs: { "href": "#", "data-dismiss": "alert", "aria-label": "close" }, on: { "click": _vm.destroyMessage } }, [_vm._v("×")]) : _vm._e(), _vm._v(" "), _vm.message.title && !_vm.message.inline ? _c('h4', { staticClass: "title", domProps: { "innerHTML": _vm._s(_vm.message.title) } }) : _vm._e(), _vm._v(" "), _vm.message.text && !_vm.message.inline ? _c('p', { staticClass: "message", domProps: { "innerHTML": _vm._s(_vm.message.text) } }) : _vm._e(), _vm._v(" "), (_vm.message.title || _vm.message.text) && _vm.message.inline ? _c('span', { class: [_vm.confirmBtn || _vm.cancelBtn ? 'col-md-8' : 'col-md-12', _vm.confirmBtn || _vm.cancelBtn ? 'col-sm-8' : 'col-md-12', _vm.confirmBtn || _vm.cancelBtn ? 'col-xs-8' : 'col-md-12'] }, [_c('strong', { staticClass: "title inline", domProps: { "innerHTML": _vm._s(_vm.message.title) } }), _vm._v(" "), _c('span', { staticClass: "message inline", domProps: { "innerHTML": _vm._s(_vm.message.text) } })]) : _vm._e(), _vm._v(" "), _vm.confirmBtn || _vm.cancelBtn ? _c('p', { staticClass: "buttons__wrapper", class: { 'col-md-4': !!_vm.message.inline,
       'col-sm-4': !!_vm.message.inline,
       'col-xs-4': !!_vm.message.inline } }, [_vm.cancelBtn ? _c('button', { staticClass: "btn btn-danger btn-sm", attrs: { "type": "button" }, domProps: { "textContent": _vm._s(_vm.cancelBtn) }, on: { "click": function click($event) {
-        $event.preventDefault();$event.stopPropagation();return _vm.canceled($event);
+        $event.preventDefault();$event.stopPropagation();return _vm.canceled.apply(null, arguments);
       } } }) : _vm._e(), _vm._v(" "), _vm.confirmBtn ? _c('button', { staticClass: "btn btn-sm btn-success", attrs: { "type": "button" }, domProps: { "textContent": _vm._s(_vm.confirmBtn) }, on: { "click": function click($event) {
-        $event.preventDefault();$event.stopPropagation();return _vm.confirmed($event);
+        $event.preventDefault();$event.stopPropagation();return _vm.confirmed.apply(null, arguments);
       } } }) : _vm._e()]) : _vm._e()])]);
 };
 var __vue_staticRenderFns__ = [];
@@ -239,6 +239,8 @@ var __vue_is_functional_template__ = false;
 /* style inject SSR */
 
 var message = normalizeComponent_1({ render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ }, __vue_inject_styles__, __vue_script__, __vue_scope_id__, __vue_is_functional_template__, __vue_module_identifier__, undefined, undefined);
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -277,7 +279,7 @@ var script$1 = {
         flashMask: function flashMask() {
             var isMask = false;
 
-            $.each(this.messages, function (k, v) {
+            this.messages.forEach(function (v) {
                 if (v.mask) {
                     isMask = true;
 
@@ -338,7 +340,7 @@ var script$1 = {
             return this.messages.push(this.handleObject(message));
         },
         handleObject: function handleObject(message) {
-            return $.extend(this.defaultOptions(), message);
+            return _extends({}, this.defaultOptions(), message);
         },
         defaultOptions: function defaultOptions() {
             return {
@@ -391,8 +393,8 @@ function styleInject(css, ref) {
   }
 }
 
-var css = ".flash__mask{position:fixed;z-index:9999;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,.5);display:block;-webkit-transition:opacity .3s ease;transition:opacity .3s ease}.flash__container{z-index:9999;position:fixed;max-width:460px;min-width:335px}.flash__container .alert{margin-bottom:10px;min-width:200px;min-height:100px;background-color:#030303;color:#fff;opacity:.9}.flash__container .alert p.message{min-height:33px}.flash__container .alert .buttons__wrapper{text-align:left}.flash__container .alert.alert-inline{min-height:62px}.flash__container .alert.alert-success{background-color:#51a351}.flash__container .alert.alert-info{background-color:#2f96b4}.flash__container .alert.alert-warning{background-color:#f89406}.flash__container .alert.alert-danger{background-color:#bd362f}.flash__container .alert .btn-danger{margin-left:5px}.flash__container .fade-enter-active,.flash__container .fade-leave-active{-webkit-transition:opacity .5s;transition:opacity .5s}.flash__container .fade-enter,.flash__container .fade-leave-to{opacity:0}";
-styleInject(css);
+var css_248z = ".flash__mask{position:fixed;z-index:9999;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,.5);display:block;-webkit-transition:opacity .3s ease;transition:opacity .3s ease}.flash__container{z-index:9999;position:fixed;max-width:460px;min-width:335px}.flash__container .alert{margin-bottom:10px;min-width:200px;min-height:100px;background-color:#030303;color:#fff;opacity:.9}.flash__container .alert p.message{min-height:33px}.flash__container .alert .buttons__wrapper{text-align:left}.flash__container .alert.alert-inline{min-height:62px}.flash__container .alert.alert-success{background-color:#51a351}.flash__container .alert.alert-info{background-color:#2f96b4}.flash__container .alert.alert-warning{background-color:#f89406}.flash__container .alert.alert-danger{background-color:#bd362f}.flash__container .alert .btn-danger{margin-left:5px}.flash__container .fade-enter-active,.flash__container .fade-leave-active{-webkit-transition:opacity .5s;transition:opacity .5s}.flash__container .fade-enter,.flash__container .fade-leave-to{opacity:0}";
+styleInject(css_248z);
 
 /* script */
 var __vue_script__$1 = script$1;

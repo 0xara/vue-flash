@@ -88,6 +88,5 @@
       "^@/(.*)$": "<rootDir>/src/$1"
     }
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
